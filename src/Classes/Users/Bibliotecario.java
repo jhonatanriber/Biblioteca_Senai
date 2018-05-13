@@ -9,6 +9,8 @@ package Classes.Users;
  *
  * @author Jhonatan Santos
  */
-public class Bibliotecario {
+
+public class Bibliotecario extends Pessoa {
+    
     
 }
