@@ -1,5 +1,5 @@
 
-package Classes.Users;
+package Users;
 
 /**
  *

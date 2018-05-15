@@ -21,21 +21,19 @@ public class Tela_Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-   public void setColor(JPanel panel)
-    {
-     panel.setBackground(new java.awt.Color(51,51,51));
+    public void setColor(JPanel panel) {
+        panel.setBackground(new java.awt.Color(51, 51, 51));
     }
- 
- public void resetColor(JPanel panel)
-    {
-        
-     panel.setBackground(new java.awt.Color(102,102,102));
-        
+
+    public void resetColor(JPanel panel) {
+
+        panel.setBackground(new java.awt.Color(102, 102, 102));
+
     }
- public void color(JPanel panel)
-    {
-     panel.setBackground(new java.awt.Color(153,153,153));
-    }  
+
+    public void color(JPanel panel) {
+        panel.setBackground(new java.awt.Color(153, 153, 153));
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -309,7 +307,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       new Config_Jpanel(jPanelPrincipal, new Smenu_Emprestimos());
+        new Config_Jpanel(jPanelPrincipal, new Smenu_Emprestimos());
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -324,8 +322,38 @@ public class Tela_Principal extends javax.swing.JFrame {
         Contas contas = new Contas();
         contas.setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Tela_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Tela_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Tela_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Tela_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-  
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tela_Principal().setVisible(true);
+            }
+        });
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

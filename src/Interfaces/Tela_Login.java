@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import Classes.Users.Dados_Users;
+import Users.Dados_Users;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -144,6 +144,7 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         } catch (IOException ex) {
             jLabelStatus.setText("Senha ou usuário incorreto.Tente novamente.");
+            JOptionPane.showMessageDialog(this, ex);
 
         }
 

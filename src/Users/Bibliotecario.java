@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes.Livros;
+package Users;
 
 /**
  *
  * @author Jhonatan Santos
  */
-public class Livros {
+
+public class Bibliotecario extends Pessoa {
+    
     
 }
