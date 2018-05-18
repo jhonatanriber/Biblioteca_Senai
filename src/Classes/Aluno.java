@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users;
+package Classes;
 
 /**
  *
  * @author Jhonatan Santos
  */
-
 public class Aluno extends Pessoa {
-    
-    private String cursso,periodo,turno;
+
+    private String cursso, periodo, turno;
     private float numMatricula;
 
     public String getCursso() {
@@ -46,5 +45,5 @@ public class Aluno extends Pessoa {
     public void setNumMatricula(float numMatricula) {
         this.numMatricula = numMatricula;
     }
-    
+
 }

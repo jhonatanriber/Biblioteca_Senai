@@ -5,15 +5,21 @@
  */
 package Interfaces;
 
+import Dados.Banco;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jhonatan Santos
  */
 public class Smenu_Livros extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Smenu_Livros
-     */
+    DefaultTableModel model;
+
     public Smenu_Livros() {
         initComponents();
     }
@@ -33,7 +39,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLivros = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -67,18 +73,18 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLivros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Titulo", "Autor", "Editora"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLivros);
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,6 +97,11 @@ public class Smenu_Livros extends javax.swing.JPanel {
         jButton7.setBackground(new java.awt.Color(0, 0, 0));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Visualizar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,6 +159,22 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            getLivros();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Não foi possivel atualizar a lista de livros","",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    public void getLivros() throws Exception {
+        model = (DefaultTableModel) jTableLivros.getModel();
+        model.setNumRows(0);
+        for (int i = 0; i < Banco.get().lerLivro().size(); i++) {
+            String[] listLivro = Banco.get().lerLivro().get(i).split(";");
+            model.addRow(listLivro);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -158,7 +185,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLivros;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package Users;
 
+import Classes.Pessoa;
+
 /**
  *
  * @author Jhonatan Santos

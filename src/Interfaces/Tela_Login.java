@@ -130,25 +130,9 @@ public class Tela_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            boolean auxValidation = false;
-            Dados_Users dados = new Dados_Users();
-            auxValidation = dados.readLogin(jTextCodigo.getText(), jTextSenha.getText());
-            if (auxValidation==true) {
+      
                 Tela_Principal tela_index = new Tela_Principal();
                 tela_index.setVisible(true);
-                setVisible(false);
-            } else {
-                jLabelStatus.setText("Senha ou usuário incorreto.Tente novamente.");
-
-            }
-        } catch (IOException ex) {
-            jLabelStatus.setText("Senha ou usuário incorreto.Tente novamente.");
-            JOptionPane.showMessageDialog(this, ex);
-
-        }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
