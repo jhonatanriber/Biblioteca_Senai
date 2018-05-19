@@ -5,10 +5,6 @@
  */
 package Interfaces;
 
-import Dados.Banco;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -75,20 +71,27 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
         jTableLivros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Titulo", "Autor", "Editora"
+                "Codigo", "Titulo", "Autor", "Editora"
             }
         ));
+        jTableLivros.setEditingColumn(0);
+        jTableLivros.setEditingRow(0);
         jScrollPane1.setViewportView(jTableLivros);
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Fazer Emprestimo");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +126,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(67, 67, 67)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,13 +170,17 @@ public class Smenu_Livros extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+     
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     public void getLivros() throws Exception {
         model = (DefaultTableModel) jTableLivros.getModel();
         model.setNumRows(0);
-        for (int i = 0; i < Banco.get().lerLivro().size(); i++) {
-            String[] listLivro = Banco.get().lerLivro().get(i).split(";");
-            model.addRow(listLivro);
-        }
+        //for (int i = 0; i < Banco.get().lerLivro().size(); i++) {
+          //  String[] listLivro = Banco.get().lerLivro().get(i).split(";");
+           // model.addRow(listLivro);
+      //  }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
