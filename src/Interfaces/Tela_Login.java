@@ -133,6 +133,7 @@ public class Tela_Login extends javax.swing.JFrame {
       
                 Tela_Principal tela_index = new Tela_Principal();
                 tela_index.setVisible(true);
+                setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

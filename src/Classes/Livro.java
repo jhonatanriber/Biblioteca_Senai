@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Livro {
 
@@ -19,11 +22,9 @@ public class Livro {
     private String paginas = "";
     private String quantidade = "";
     private String status = "";
-    private String caminho = "";
-    
-    public Livro(){}
    
-    public void setLivroDados(String titulo, String codigo, String editora, String autor, String edicao, String ano,
+ 
+    public void setDados(String titulo, String codigo, String editora, String autor, String edicao, String ano,
                          String paginas, String quantidade, String status) throws IOException {
         this.titulo = titulo;
         this.codigo = codigo;
@@ -34,14 +35,14 @@ public class Livro {
         this.paginas = paginas;
         this.quantidade = quantidade;
         this.status = status;
-        this.caminho = (new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv";
+        
     }
 
     //Inclusão do Livro
     public void setLivro() throws IOException{
-        FileWriter arquivo = new FileWriter(caminho);
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv",true);
         PrintWriter arquivoLivro = new PrintWriter(arquivo);
-        arquivoLivro.println(desmaterializar());
+        arquivoLivro.write(getDados()+"\r\n");
         arquivoLivro.close();
         System.out.println("Inclusão feita com Sucesso");
     }
@@ -50,7 +51,7 @@ public class Livro {
     public ArrayList<String> getLivro() throws Exception {
         ArrayList<String> listaLivros = new ArrayList<String>();
         String linha = "";
-        FileReader arquivoLivro = new FileReader(caminho);
+        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv");
         BufferedReader lerLivro = new BufferedReader(arquivoLivro);
 
         while ((linha = lerLivro.readLine()) != null) {
@@ -61,10 +62,10 @@ public class Livro {
         return listaLivros;
     }
 
-    public String desmaterializar() {
+    public String getDados() {
 
         String saida = codigo + ";" + titulo + ";" + autor + ";" + editora + ";"
-                + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status+"\r\n";
+                + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status;
         return saida;
     }
     

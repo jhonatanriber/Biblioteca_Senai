@@ -1,3 +1,0 @@
-Java;john;saraiva
-Java;john;saraiva
-Java;john;saraiva
