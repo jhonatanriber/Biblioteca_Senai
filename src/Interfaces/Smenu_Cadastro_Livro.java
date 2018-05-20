@@ -6,10 +6,16 @@
 package Interfaces;
 
 import Classes.Livro;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +28,8 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     Livro livro = new Livro();
     DefaultTableModel model;
     private int rowSelect;
+    BufferedImage imagem;
+    File arquivo;
     private static Smenu_Cadastro_Livro cadastro_Livro;
 
     public Smenu_Cadastro_Livro() {
@@ -50,6 +58,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             jTextAno.setText(listLivros[5]);
             jTextPaginas.setText(listLivros[6]);
             jTextQuantidade.setText(listLivros[7]);
+            jLabelFoto.setIcon(new ImageIcon(listLivros[8]));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex, "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
         }
@@ -82,7 +91,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextPaginas = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelFoto = new javax.swing.JLabel();
         jTextEdicao = new javax.swing.JTextField();
         jTextAno = new javax.swing.JTextField();
         jTextTitulo = new javax.swing.JTextField();
@@ -128,10 +137,14 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jTextPaginas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Paginas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         jPanel1.add(jTextPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 71, -1));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Foto");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 24, 90, 110));
+        jLabelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabelFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelFotoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabelFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 24, 90, 110));
 
         jTextEdicao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextEdicao.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Edição", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -441,15 +454,15 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
-           try {
-            livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
-                    jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                    jTextQuantidade.getText(), "Disponivel");
-            livro.setLivro(Livro.Action.ALTERAR, String.valueOf(jTableLivros.getSelectedRow()));
-            updateListLivro();
-        } catch (Exception ex) {
-            Logger.getLogger(Smenu_Livros.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
+                        jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
+                        jTextQuantidade.getText(), arquivo.getAbsolutePath(),"Disponivel");
+                livro.setLivro(Livro.Action.ALTERAR, String.valueOf(jTableLivros.getSelectedRow()));
+                updateListLivro();
+            } catch (Exception ex) {
+                Logger.getLogger(Smenu_Livros.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum Livro foi Selecionado!", "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
         }
@@ -459,8 +472,8 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         try {
             livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
                     jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                    jTextQuantidade.getText(), "Disponivel");
-            livro.setLivro(Livro.Action.ADCIONAR, "");
+                    jTextQuantidade.getText(),arquivo.getAbsolutePath(), "Disponivel");
+            livro.setLivro(Livro.Action.ADCIONAR,"");
             clean();
             updateListLivro();
         } catch (IOException ex) {
@@ -486,13 +499,35 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        
-         if (jTableLivros.getSelectedRow() > -1) {
+
+        if (jTableLivros.getSelectedRow() > -1) {
             viewLivro(rowSelect = jTableLivros.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum Livro foi Selecionado!", "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabelFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoMouseClicked
+        JFileChooser fc = new JFileChooser();
+        int res = fc.showOpenDialog(null);
+        Image image = null;
+
+        if (res == JFileChooser.APPROVE_OPTION) {
+            arquivo = fc.getSelectedFile();
+
+            try {
+                //livro.setImagemLivro(arquivo.getAbsolutePath(), "2018");
+                image = ImageIO.read(fc.getSelectedFile());
+                jLabelFoto.setIcon(new ImageIcon(image.getScaledInstance(jLabelFoto.getWidth(), jLabelFoto.getHeight(), Image.SCALE_DEFAULT)));
+
+            } catch (Exception ex) {
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Voce nao selecionou nenhum arquivo.");
+        }
+    }//GEN-LAST:event_jLabelFotoMouseClicked
     public void clean() {
         jTextTitulo.setText("");
         jTextCodigo.setText("");
@@ -506,7 +541,6 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cadastro_Livros;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -515,6 +549,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelFoto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;

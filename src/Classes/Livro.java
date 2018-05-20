@@ -1,5 +1,6 @@
 package Classes;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class Livro {
@@ -22,10 +24,12 @@ public class Livro {
     private String paginas = "";
     private String quantidade = "";
     private String status = "";
+    private String caminhoImagem = "";
     private Action action;
+    BufferedImage imagem;
 
     public void setDados(String titulo, String codigo, String editora, String autor, String edicao, String ano,
-            String paginas, String quantidade, String status) throws IOException {
+            String paginas, String quantidade,String caminhoImagem, String status) throws IOException {
         this.titulo = titulo;
         this.codigo = codigo;
         this.editora = editora;
@@ -34,7 +38,9 @@ public class Livro {
         this.ano = ano;
         this.paginas = paginas;
         this.quantidade = quantidade;
+        this.caminhoImagem = caminhoImagem;
         this.status = status;
+       
 
     }
 
@@ -46,12 +52,14 @@ public class Livro {
         if (action != Action.ADCIONAR) {
             aux = false;
         }
-        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\Banco\\Livros\\Livros.csv", aux);
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv", aux);
         PrintWriter arquivoLivro = new PrintWriter(arquivo);
         switch (action) {
             case ADCIONAR:
+                caminhoImagem = setImagemLivro(caminhoImagem,codigo);
                 arquivoLivro.write(getDados() + "\r\n");
                 arquivoLivro.close();
+                
                 break;
             case EXCLUIR:
                 listLivro.remove(Integer.parseInt(dados));
@@ -76,6 +84,9 @@ public class Livro {
                 break;
             case DEVOLVER:
                 break;
+            case IMAGEM:
+                
+                break;
 
         }
     }
@@ -84,7 +95,7 @@ public class Livro {
     public ArrayList<String> getLivro() throws Exception {
         ArrayList<String> listLivro = new ArrayList<String>();
         String linha = "";
-        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\Banco\\Livros\\Livros.csv");
+        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv");
         BufferedReader lerLivro = new BufferedReader(arquivoLivro);
 
         while ((linha = lerLivro.readLine()) != null) {
@@ -99,11 +110,19 @@ public class Livro {
     public String getDados() {
 
         String saida = codigo + ";" + titulo + ";" + autor + ";" + editora + ";"
-                + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status;
+                + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";"+caminhoImagem +";"+ status;
         return saida;
     }
 
+    public String setImagemLivro(String caminho,String codigo) throws IOException {
+        String caminhoDestino = (new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Imagens\\"+codigo+".jpg";
+        imagem = ImageIO.read(new File(caminho));
+        File outputfile = new File(caminhoDestino);
+        ImageIO.write(imagem, "jpg", outputfile);
+        return caminhoDestino;
+    }
+
     public enum Action {
-        ADCIONAR, EXCLUIR, ALTERAR, RESERVAR, EMPRESTIMO, DEVOLVER
+        ADCIONAR, EXCLUIR, ALTERAR, RESERVAR, EMPRESTIMO, DEVOLVER,IMAGEM
     }
 }
