@@ -185,7 +185,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Perfil.png"))); // NOI18N
-        jLabel4.setText("Perfil");
+        jLabel4.setText("Conta");
         jLabel4.setToolTipText("");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
