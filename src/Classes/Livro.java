@@ -22,10 +22,10 @@ public class Livro {
     private String paginas = "";
     private String quantidade = "";
     private String status = "";
-   
- 
+    private Action action;
+
     public void setDados(String titulo, String codigo, String editora, String autor, String edicao, String ano,
-                         String paginas, String quantidade, String status) throws IOException {
+            String paginas, String quantidade, String status) throws IOException {
         this.titulo = titulo;
         this.codigo = codigo;
         this.editora = editora;
@@ -35,31 +35,65 @@ public class Livro {
         this.paginas = paginas;
         this.quantidade = quantidade;
         this.status = status;
-        
+
     }
 
     //Inclusão do Livro
-    public void setLivro() throws IOException{
-        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv",true);
+    public void setLivro(Action action, String dados) throws IOException, Exception {
+        boolean aux = true;
+        ArrayList<String> listLivro = new ArrayList<String>();
+        listLivro = getLivro();
+        if (action != Action.ADCIONAR) {
+            aux = false;
+        }
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\Banco\\Livros\\Livros.csv", aux);
         PrintWriter arquivoLivro = new PrintWriter(arquivo);
-        arquivoLivro.write(getDados()+"\r\n");
-        arquivoLivro.close();
-        System.out.println("Inclusão feita com Sucesso");
+        switch (action) {
+            case ADCIONAR:
+                arquivoLivro.write(getDados() + "\r\n");
+                arquivoLivro.close();
+                break;
+            case EXCLUIR:
+                listLivro.remove(Integer.parseInt(dados));
+                for (int i = 0; i < listLivro.size(); i++) {
+                    arquivoLivro.write(listLivro.get(i) + "\r\n");
+                }
+                arquivoLivro.close();
+                listLivro.removeAll(listLivro);
+                break;
+
+            case ALTERAR:
+                listLivro.set(Integer.parseInt(dados), getDados());
+                for (int i = 0; i < listLivro.size(); i++) {
+                    arquivoLivro.write(listLivro.get(i) + "\r\n");
+                }
+                arquivoLivro.close();
+                listLivro.removeAll(listLivro);
+                break;
+            case RESERVAR:
+                break;
+            case EMPRESTIMO:
+                break;
+            case DEVOLVER:
+                break;
+
+        }
     }
 
     //Ler Livros Cadastrados
     public ArrayList<String> getLivro() throws Exception {
-        ArrayList<String> listaLivros = new ArrayList<String>();
+        ArrayList<String> listLivro = new ArrayList<String>();
         String linha = "";
-        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv");
+        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\Banco\\Livros\\Livros.csv");
         BufferedReader lerLivro = new BufferedReader(arquivoLivro);
 
         while ((linha = lerLivro.readLine()) != null) {
-         listaLivros.add(linha);
-         }
+            listLivro.add(linha);
+        }
         lerLivro.close();
 
-        return listaLivros;
+        return listLivro;
+
     }
 
     public String getDados() {
@@ -68,5 +102,8 @@ public class Livro {
                 + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status;
         return saida;
     }
-    
+
+    public enum Action {
+        ADCIONAR, EXCLUIR, ALTERAR, RESERVAR, EMPRESTIMO, DEVOLVER
+    }
 }
