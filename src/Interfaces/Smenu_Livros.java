@@ -87,12 +87,16 @@ public class Smenu_Livros extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Titulo", "Autor", "Editora"
+                "Codigo", "Titulo", "Editora", "Autor"
             }
         ));
         jTableLivros.setEditingColumn(0);
         jTableLivros.setEditingRow(0);
         jScrollPane1.setViewportView(jTableLivros);
+        if (jTableLivros.getColumnModel().getColumnCount() > 0) {
+            jTableLivros.getColumnModel().getColumn(2).setResizable(false);
+            jTableLivros.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, 580, 290));
 
@@ -346,10 +350,8 @@ public class Smenu_Livros extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -138,6 +138,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jPanel1.add(jTextPaginas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 71, -1));
 
         jLabelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/livro.jpg"))); // NOI18N
         jLabelFoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabelFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -537,6 +538,8 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jTextAno.setText("");
         jTextPaginas.setText("");
         jTextQuantidade.setText("");
+        jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/livro.jpg")));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
