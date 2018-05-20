@@ -311,17 +311,19 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
-            new Config_Jpanel(Smenu_Livros, Smenu_Cadastro_Livro.get());
-            Smenu_Cadastro_Livro.get().viewLivro(jTableLivros.getSelectedRow());
+            Smenu_Cadastro_Livro cadastro_livro = new Smenu_Cadastro_Livro();
+            new Config_Jpanel(Smenu_Livros, cadastro_livro);
+            cadastro_livro.viewLivro(jTableLivros.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum Livro foi Selecionado!", "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        if (jTableLivros.getSelectedRow() > -1) {
-            new Config_Jpanel(Smenu_Livros, Smenu_Cadastro_Livro.get());
-            Smenu_Cadastro_Livro.get().viewLivro(jTableLivros.getSelectedRow());
+         if (jTableLivros.getSelectedRow() > -1) {
+            Smenu_Cadastro_Livro cadastro_livro = new Smenu_Cadastro_Livro();
+            new Config_Jpanel(Smenu_Livros, cadastro_livro);
+            cadastro_livro.viewLivro(jTableLivros.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum Livro foi Selecionado!", "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
         }
