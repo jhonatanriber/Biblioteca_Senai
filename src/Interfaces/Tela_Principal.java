@@ -72,6 +72,13 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanelPrincipal = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -102,7 +109,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabelLivro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLivro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Livros.png"))); // NOI18N
         jLabelLivro.setText("Livros");
-        jLabelLivro.setToolTipText("");
+        jLabelLivro.setToolTipText("Livros");
         jLabelLivro.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabelLivro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelLivro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -146,7 +153,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabelEmprestimo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEmprestimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Emprestimos.png"))); // NOI18N
         jLabelEmprestimo.setText("Emprestimos");
-        jLabelEmprestimo.setToolTipText("");
+        jLabelEmprestimo.setToolTipText("Emprestimos");
         jLabelEmprestimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelEmprestimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabelEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +194,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabelReserva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Reservas.png"))); // NOI18N
         jLabelReserva.setText("Reservas");
-        jLabelReserva.setToolTipText("");
+        jLabelReserva.setToolTipText("Reservas");
         jLabelReserva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelReserva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabelReserva.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,7 +239,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabelDevolvidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDevolvidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Devolucao.png"))); // NOI18N
         jLabelDevolvidos.setText("Devolvidos");
-        jLabelDevolvidos.setToolTipText("");
+        jLabelDevolvidos.setToolTipText("Devolvidos");
         jLabelDevolvidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelDevolvidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabelDevolvidos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,8 +279,8 @@ public class Tela_Principal extends javax.swing.JFrame {
         jLabelContas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelContas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelContas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Perfil.png"))); // NOI18N
-        jLabelContas.setText("Conta");
-        jLabelContas.setToolTipText("");
+        jLabelContas.setText("Contas");
+        jLabelContas.setToolTipText("Contas");
         jLabelContas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelContas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabelContas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -334,8 +341,9 @@ public class Tela_Principal extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/usuario.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 2, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 2, 80, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Joao Carlos");
@@ -357,12 +365,33 @@ public class Tela_Principal extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jPanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 8, 610, -1));
+
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jMenu1.setText("Livros");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Emprestimos");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Reservas");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Devolvidos");
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Contas");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Sobre");
+        jMenuBar1.add(jMenu6);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -372,7 +401,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
 
         pack();
@@ -522,6 +551,13 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEmprestimo;
     private javax.swing.JLabel jLabelLivro;
     private javax.swing.JLabel jLabelReserva;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;

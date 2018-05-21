@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +36,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     public Smenu_Cadastro_Livro() {
         initComponents();
         updateListLivro();
+        jScrollPane1.getViewport().setOpaque(false);
 
     }
 
@@ -75,6 +77,20 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex, "Atualizar Livros", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void setAllColor(JPanel dados) {
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel8.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel10.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel12.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        if (dados != null) {
+            dados.setBackground(new java.awt.Color(102, 102, 102));
         }
     }
 
@@ -190,6 +206,8 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         ));
         jTableLivros.setEditingColumn(0);
         jTableLivros.setEditingRow(0);
+        jTableLivros.setSelectionBackground(new java.awt.Color(0, 255, 255));
+        jTableLivros.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTableLivros);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -202,6 +220,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
             }
         });
 
@@ -225,6 +249,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -247,6 +277,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel6MouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -268,6 +304,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
             }
         });
 
@@ -292,6 +334,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
             }
         });
 
@@ -343,6 +391,14 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Fazer Emprestimo");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 30));
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
@@ -355,6 +411,12 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
         });
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 171, 30));
 
@@ -363,6 +425,14 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Reservar");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -456,7 +526,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             try {
                 livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
                         jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                        jTextQuantidade.getText(), arquivo.getAbsolutePath(),"Disponivel");
+                        jTextQuantidade.getText(), arquivo.getAbsolutePath(), "Disponivel");
                 livro.setLivro(Livro.Action.ALTERAR, String.valueOf(jTableLivros.getSelectedRow()));
                 updateListLivro();
             } catch (Exception ex) {
@@ -471,8 +541,8 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         try {
             livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
                     jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                    jTextQuantidade.getText(),arquivo.getAbsolutePath(), "Disponivel");
-            livro.setLivro(Livro.Action.ADCIONAR,"");
+                    jTextQuantidade.getText(), arquivo.getAbsolutePath(), "Disponivel");
+            livro.setLivro(Livro.Action.ADCIONAR, "");
             clean();
             updateListLivro();
         } catch (IOException ex) {
@@ -527,6 +597,70 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Voce nao selecionou nenhum arquivo.");
         }
     }//GEN-LAST:event_jLabelFotoMouseClicked
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel6MouseExited
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel8MouseExited
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel7MouseExited
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        setAllColor(null);
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        setAllColor(jPanel7);
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+        setAllColor(jPanel9);
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        setAllColor(jPanel8);
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+         setAllColor(jPanel11);
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+         setAllColor(jPanel12);
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+         setAllColor(jPanel2);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+         setAllColor(jPanel10);
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+         setAllColor(jPanel5);
+    }//GEN-LAST:event_jLabel3MouseEntered
     public void clean() {
         jTextTitulo.setText("");
         jTextCodigo.setText("");
@@ -537,7 +671,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
         jTextPaginas.setText("");
         jTextQuantidade.setText("");
         jLabelFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/livro.jpg")));
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
