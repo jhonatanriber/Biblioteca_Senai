@@ -8,6 +8,7 @@ package Interfaces;
 import Classes.Livro;
 import Classes.imgTable;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -32,10 +34,18 @@ public class Smenu_Livros extends javax.swing.JPanel {
     public Smenu_Livros() {
         initComponents();
         updateListLivro();
-        jScrollPane1.getViewport().setOpaque(false);
+        setTable();
+       
         
         
        
+    }
+    public void setTable(){
+        jScrollPane1.getViewport().setOpaque(false);
+        JTableHeader thread = jTableLivros.getTableHeader();
+        thread.setForeground(Color.BLACK);
+        thread.setFont(new Font("Tahome",Font.BOLD,12));
+        ((DefaultTableCellRenderer)thread.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
 
     public void updateListLivro() {
