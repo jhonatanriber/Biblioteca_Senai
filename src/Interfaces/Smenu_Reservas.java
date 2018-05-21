@@ -51,13 +51,13 @@ public class Smenu_Reservas extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(605, 430));
+        setPreferredSize(new java.awt.Dimension(605, 448));
 
-        Smenu_Livros.setPreferredSize(new java.awt.Dimension(605, 430));
+        Smenu_Livros.setPreferredSize(new java.awt.Dimension(605, 448));
         Smenu_Livros.setLayout(new javax.swing.BoxLayout(Smenu_Livros, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(605, 430));
+        jPanel2.setPreferredSize(new java.awt.Dimension(605, 448));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -82,7 +82,7 @@ public class Smenu_Reservas extends javax.swing.JPanel {
             jTableLivros.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, 580, 290));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, 580, 330));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -119,7 +119,7 @@ public class Smenu_Reservas extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 566, -1));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 566, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 

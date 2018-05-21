@@ -47,13 +47,13 @@ public class Smenu_Contas extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(605, 430));
+        setPreferredSize(new java.awt.Dimension(605, 448));
 
-        Smenu_Contas.setPreferredSize(new java.awt.Dimension(605, 430));
+        Smenu_Contas.setPreferredSize(new java.awt.Dimension(605, 448));
         Smenu_Contas.setLayout(new javax.swing.BoxLayout(Smenu_Contas, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(605, 430));
+        jPanel2.setPreferredSize(new java.awt.Dimension(605, 448));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));

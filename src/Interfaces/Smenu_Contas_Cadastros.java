@@ -64,13 +64,13 @@ public class Smenu_Contas_Cadastros extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(605, 430));
+        setPreferredSize(new java.awt.Dimension(605, 448));
 
-        Smenu_Livros.setPreferredSize(new java.awt.Dimension(605, 430));
+        Smenu_Livros.setPreferredSize(new java.awt.Dimension(605, 448));
         Smenu_Livros.setLayout(new javax.swing.BoxLayout(Smenu_Livros, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(605, 430));
+        jPanel2.setPreferredSize(new java.awt.Dimension(605, 448));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
