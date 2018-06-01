@@ -50,7 +50,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     public void viewLivro(int dados) {
         try {
             this.rowSelect = dados;
-            ArrayList<String> listLivro = livro.getLivro();
+            ArrayList<String> listLivro = livro.getLivros();
             String[] listLivros = listLivro.get(rowSelect).split(";");
             jTextTitulo.setText(listLivros[1]);
             jTextCodigo.setText(listLivros[0]);
@@ -68,7 +68,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
 
     public void updateListLivro() {
         try {
-            ArrayList<String> listLivros = livro.getLivro();
+            ArrayList<String> listLivros = livro.getLivros();
             model = (DefaultTableModel) jTableLivros.getModel();
             model.setNumRows(0);
             for (int i = 0; i < listLivros.size(); i++) {
@@ -524,10 +524,16 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
             try {
-                livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
-                        jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                        jTextQuantidade.getText(), arquivo.getAbsolutePath(), "Disponivel");
-                livro.setLivro(Livro.Action.ALTERAR, String.valueOf(jTableLivros.getSelectedRow()));
+                livro.setCodigo(jTextCodigo.getText());
+                livro.setTitulo(jTextTitulo.getText());
+                livro.setEditora(jTextEditora.getText());
+                livro.setAutor(jTextAutor.getText());
+                livro.setEdicao(jTextEdicao.getText());
+                livro.setAno(jTextAno.getText());
+                livro.setPaginas(jTextPaginas.getText());
+                livro.setQuantidade(jTextQuantidade.getText());
+                livro.setCaminhoImagem(arquivo.getAbsolutePath());
+                livro.executarAcao(Livro.Action.EDITAR, rowSelect);
                 updateListLivro();
             } catch (Exception ex) {
                 Logger.getLogger(Smenu_Livros.class.getName()).log(Level.SEVERE, null, ex);
@@ -539,14 +545,18 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         try {
-            livro.setDados(jTextTitulo.getText(), jTextCodigo.getText(), jTextEditora.getText(),
-                    jTextAutor.getText(), jTextEdicao.getText(), jTextAno.getText(), jTextPaginas.getText(),
-                    jTextQuantidade.getText(), arquivo.getAbsolutePath(), "Disponivel");
-            livro.setLivro(Livro.Action.ADCIONAR, "");
+            livro.setCodigo(jTextCodigo.getText());
+            livro.setTitulo(jTextTitulo.getText());
+            livro.setEditora(jTextEditora.getText());
+            livro.setAutor(jTextAutor.getText());
+            livro.setEdicao(jTextEdicao.getText());
+            livro.setAno(jTextAno.getText());
+            livro.setPaginas(jTextPaginas.getText());
+            livro.setQuantidade(jTextQuantidade.getText());
+            livro.setCaminhoImagem(arquivo.getAbsolutePath());
+            livro.executarAcao(Livro.Action.ADCIONAR, 0);
             clean();
             updateListLivro();
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Adcionar Livro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex, "Adcionar Livro", JOptionPane.ERROR_MESSAGE);
         }
@@ -555,7 +565,7 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         try {
             rowSelect = jTableLivros.getSelectedRow();
-            livro.setLivro(Livro.Action.EXCLUIR, String.valueOf(rowSelect));
+            livro.executarAcao(Livro.Action.EXCLUIR, rowSelect);
             updateListLivro();
             clean();
         } catch (Exception ex) {
@@ -643,23 +653,23 @@ public class Smenu_Cadastro_Livro extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-         setAllColor(jPanel11);
+        setAllColor(jPanel11);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-         setAllColor(jPanel12);
+        setAllColor(jPanel12);
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-         setAllColor(jPanel2);
+        setAllColor(jPanel2);
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-         setAllColor(jPanel10);
+        setAllColor(jPanel10);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-         setAllColor(jPanel5);
+        setAllColor(jPanel5);
     }//GEN-LAST:event_jLabel3MouseEntered
     public void clean() {
         jTextTitulo.setText("");

@@ -1,17 +1,8 @@
 package Classes;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import Dados.LivroDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 public class Livro {
 
@@ -25,104 +16,124 @@ public class Livro {
     private String quantidade = "";
     private String status = "";
     private String caminhoImagem = "";
-    private Action action;
-    BufferedImage imagem;
+    LivroDAO livroDAO = new LivroDAO();
 
-    public void setDados(String titulo, String codigo, String editora, String autor, String edicao, String ano,
-            String paginas, String quantidade,String caminhoImagem, String status) throws IOException {
-        this.titulo = titulo;
-        this.codigo = codigo;
-        this.editora = editora;
-        this.autor = autor;
-        this.edicao = edicao;
-        this.ano = ano;
-        this.paginas = paginas;
-        this.quantidade = quantidade;
-        this.caminhoImagem = caminhoImagem;
-        this.status = status;
-       
-
+    public String getCodigo() {
+        return codigo;
     }
 
-    //Inclusão do Livro
-    public void setLivro(Action action, String dados) throws IOException, Exception {
-        boolean aux = true;
-        ArrayList<String> listLivro = new ArrayList<String>();
-        listLivro = getLivro();
-        if (action != Action.ADCIONAR) {
-            aux = false;
-        }
-        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv", aux);
-        PrintWriter arquivoLivro = new PrintWriter(arquivo);
-        switch (action) {
-            case ADCIONAR:
-                caminhoImagem = setImagemLivro(caminhoImagem,codigo);
-                arquivoLivro.write(getDados() + "\r\n");
-                arquivoLivro.close();
-                
-                break;
-            case EXCLUIR:
-                listLivro.remove(Integer.parseInt(dados));
-                for (int i = 0; i < listLivro.size(); i++) {
-                    arquivoLivro.write(listLivro.get(i) + "\r\n");
-                }
-                arquivoLivro.close();
-                listLivro.removeAll(listLivro);
-                break;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
-            case ALTERAR:
-                listLivro.set(Integer.parseInt(dados), getDados());
-                for (int i = 0; i < listLivro.size(); i++) {
-                    arquivoLivro.write(listLivro.get(i) + "\r\n");
-                }
-                arquivoLivro.close();
-                listLivro.removeAll(listLivro);
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public String getEdicao() {
+        return edicao;
+    }
+
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public String getPaginas() {
+        return paginas;
+    }
+
+    public void setPaginas(String paginas) {
+        this.paginas = paginas;
+    }
+
+    public String getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCaminhoImagem() {
+        return caminhoImagem;
+    }
+
+    public void setCaminhoImagem(String caminhoImagem) {
+        this.caminhoImagem = caminhoImagem;
+    }
+
+    public String getDadosLivro() {
+        return codigo +";"+ titulo +";"+ autor +";"+ editora +";"+ edicao +";"+ ano +";"+ paginas +";"+ quantidade +";"+ status;
+    }
+
+    public ArrayList<String> getLivros() throws IOException {
+        return livroDAO.getLivro();
+    }
+
+    public void executarAcao(Action acao,int linha) throws IOException {
+        switch (acao) {
+            case ADCIONAR:
+                livroDAO.addLivro(getDadosLivro()+livroDAO.setImagemLivro(codigo, caminhoImagem));
                 break;
+                
+            case EXCLUIR:
+                livroDAO.deleteLivro(linha);
+                break;
+                
+            case EDITAR:
+                livroDAO.editLivro(linha,getDadosLivro()+livroDAO.setImagemLivro(codigo, caminhoImagem));
+                break;
+                
             case RESERVAR:
                 break;
+                
             case EMPRESTIMO:
                 break;
+                
             case DEVOLVER:
                 break;
-            case IMAGEM:
-                
-                break;
-
         }
-    }
-
-    //Ler Livros Cadastrados
-    public ArrayList<String> getLivro() throws Exception {
-        ArrayList<String> listLivro = new ArrayList<String>();
-        String linha = "";
-        FileReader arquivoLivro = new FileReader((new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Livros.csv");
-        BufferedReader lerLivro = new BufferedReader(arquivoLivro);
-
-        while ((linha = lerLivro.readLine()) != null) {
-            listLivro.add(linha);
-        }
-        lerLivro.close();
-
-        return listLivro;
-
-    }
-
-    public String getDados() {
-
-        String saida = codigo + ";" + titulo + ";" + autor + ";" + editora + ";"
-                + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";"+caminhoImagem +";"+ status;
-        return saida;
-    }
-
-    public String setImagemLivro(String caminho,String codigo) throws IOException {
-        String caminhoDestino = (new File("..").getCanonicalPath()) + "\\BibliotecaSenai\\Banco\\Livros\\Imagens\\"+codigo+".jpg";
-        imagem = ImageIO.read(new File(caminho));
-        File outputfile = new File(caminhoDestino);
-        ImageIO.write(imagem, "jpg", outputfile);
-        return caminhoDestino;
     }
 
     public enum Action {
-        ADCIONAR, EXCLUIR, ALTERAR, RESERVAR, EMPRESTIMO, DEVOLVER,IMAGEM
+        ADCIONAR, EXCLUIR, EDITAR, RESERVAR, EMPRESTIMO, DEVOLVER
+
     }
+
 }
