@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users;
-
-import Classes.Pessoa;
+package Dados;
 
 /**
  *
- * @author Jhonatan Santos
+ * @author jhonatan
  */
-
-public class Bibliotecario extends Pessoa {
-    
+public class AlunoDAO {
     
 }

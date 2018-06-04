@@ -6,7 +6,7 @@
 package Interfaces;
 
 import Classes.Livro;
-import Classes.imgTable;
+import Dados.Imagem_Config;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -46,13 +46,14 @@ public class Smenu_Livros extends javax.swing.JPanel {
         thread.setForeground(Color.BLACK);
         thread.setFont(new Font("Tahome",Font.BOLD,12));
         ((DefaultTableCellRenderer)thread.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        
     }
 
     public void updateListLivro() {
         try {
-            ArrayList<String> listLivros = livro.getLivro();
+            ArrayList<String> listLivros = livro.getLivros();
             model = (DefaultTableModel) jTableLivros.getModel();
-            jTableLivros.setDefaultRenderer(Object.class, new imgTable());
+            jTableLivros.setDefaultRenderer(Object.class, new Imagem_Config());
             jTableLivros.setRowHeight(50);
             model.setNumRows(0);
             for (int i = 0; i < listLivros.size(); i++) {
@@ -396,7 +397,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
             try {
-                livro.setLivro(Livro.Action.EXCLUIR, String.valueOf(jTableLivros.getSelectedRow()));
+                livro.executarAcao(Livro.Action.EXCLUIR, jTableLivros.getSelectedRow());
                 updateListLivro();
             } catch (Exception ex) {
                 Logger.getLogger(Smenu_Livros.class.getName()).log(Level.SEVERE, null, ex);
