@@ -84,6 +84,7 @@ public class LivroDAO {
         return listLivro;
     }
     
+    
      public String setImagemLivro(String codigo,String caminhoImagem) throws IOException {
         String caminhoDestino = (new File("..").getCanonicalPath()) + localizacaoImagens+codigo+".jpg";
         BufferedImage imagem = ImageIO.read(new File(caminhoImagem));

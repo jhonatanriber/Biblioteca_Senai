@@ -51,16 +51,15 @@ public class ExemplarDAO {
 
     }
 
-    public ArrayList<String> getExemplar(String codigo) throws IOException {
+    public ArrayList<String> getExemplar() throws IOException {
         ArrayList<String> listExemplar = new ArrayList<String>();
         String linha = "";
         FileReader arquivoExemplar = new FileReader((new File("..").getCanonicalPath()) + localizacaoExemplar);
         BufferedReader lerExemplar = new BufferedReader(arquivoExemplar);
 
         while ((linha = lerExemplar.readLine()) != null) {
-            if (linha.contains(codigo)) {
-                listExemplar.add(linha);
-            }
+
+            listExemplar.add(linha);
 
         }
         lerExemplar.close();
@@ -68,6 +67,8 @@ public class ExemplarDAO {
         return listExemplar;
 
     }
+
+   
     /*
     public ArrayList<String> getReservasLivro() {
 

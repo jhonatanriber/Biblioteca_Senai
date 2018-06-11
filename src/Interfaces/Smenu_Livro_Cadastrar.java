@@ -613,7 +613,11 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-    new Config_Jpanel(Conteiner_Livro, new Smenu_Exemplar());        
+        try {        
+            new Config_Jpanel(Conteiner_Livro, new Smenu_Exemplar());
+        } catch (IOException ex) {
+            Logger.getLogger(Smenu_Livro_Cadastrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jLabel2MouseClicked
     public void clean() {
         jTextTitulo.setText("");

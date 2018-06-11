@@ -67,8 +67,8 @@ public class Exemplar {
         }
     }
 
-    public ArrayList<String> getExemplar() throws IOException {
-        return exemplarDAO.getExemplar(codigoLivro);
+    public ArrayList<String> getListExemplar() throws IOException {
+        return exemplarDAO.getExemplar();
     }
 
     public enum Action {
