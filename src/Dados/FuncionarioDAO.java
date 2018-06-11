@@ -9,6 +9,6 @@ package Dados;
  *
  * @author jhonatan
  */
-public class Usuario_SistemaDAO {
+public class FuncionarioDAO {
     
 }

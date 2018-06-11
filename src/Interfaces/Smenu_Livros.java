@@ -391,7 +391,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        new Config_Jpanel(Smenu_Livros, new Smenu_Cadastro_Livro());
+        new Config_Jpanel(Smenu_Livros, new Smenu_Livro_Cadastrar());
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -410,7 +410,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
-            Smenu_Cadastro_Livro cadastro_livro = new Smenu_Cadastro_Livro();
+            Smenu_Livro_Cadastrar cadastro_livro = new Smenu_Livro_Cadastrar();
             new Config_Jpanel(Smenu_Livros, cadastro_livro);
             cadastro_livro.viewLivro(jTableLivros.getSelectedRow());
         } else {
@@ -420,7 +420,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         if (jTableLivros.getSelectedRow() > -1) {
-            Smenu_Cadastro_Livro cadastro_livro = new Smenu_Cadastro_Livro();
+            Smenu_Livro_Cadastrar cadastro_livro = new Smenu_Livro_Cadastrar();
             new Config_Jpanel(Smenu_Livros, cadastro_livro);
             cadastro_livro.viewLivro(jTableLivros.getSelectedRow());
         } else {
