@@ -51,7 +51,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
 
     public void updateListLivro() {
         try {
-            ArrayList<String> listLivros = livro.getLivros();
+            ArrayList<String> listLivros = livro.getListLivros();
             model = (DefaultTableModel) jTableLivros.getModel();
             jTableLivros.setDefaultRenderer(Object.class, new Imagem_Config());
             jTableLivros.setRowHeight(50);
@@ -59,7 +59,7 @@ public class Smenu_Livros extends javax.swing.JPanel {
             for (int i = 0; i < listLivros.size(); i++) {
                 String[] listLivro = listLivros.get(i).split(";");
                 model.addRow(new Object[]{new JLabel(new ImageIcon(listLivro[8])),listLivro[0],
-                    listLivro[1],listLivro[2],listLivro[3]});
+                    listLivro[1],listLivro[2],listLivro[3],listLivro[7]});
                 //model.addRow(listLivro);
             }
             
@@ -125,24 +125,34 @@ public class Smenu_Livros extends javax.swing.JPanel {
         jTableLivros.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jTableLivros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Foto", "Codigo", "Titulo", "Editora", "Autor"
+                "Foto", "Codigo", "Titulo", "Autor", "Editora", "Qtd"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableLivros.setEditingColumn(0);
         jTableLivros.setEditingRow(0);
         jTableLivros.setGridColor(new java.awt.Color(255, 255, 255));
         jTableLivros.setSelectionBackground(new java.awt.Color(51, 255, 255));
         jTableLivros.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jTableLivros.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableLivros);
         if (jTableLivros.getColumnModel().getColumnCount() > 0) {
-            jTableLivros.getColumnModel().getColumn(3).setResizable(false);
-            jTableLivros.getColumnModel().getColumn(4).setResizable(false);
+            jTableLivros.getColumnModel().getColumn(0).setPreferredWidth(15);
+            jTableLivros.getColumnModel().getColumn(1).setPreferredWidth(7);
+            jTableLivros.getColumnModel().getColumn(5).setPreferredWidth(2);
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, 580, 330));
@@ -175,11 +185,11 @@ public class Smenu_Livros extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel3MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
             }
         });
         jPanelVisualizar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 171, 30));

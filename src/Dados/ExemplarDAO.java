@@ -20,7 +20,7 @@ import javax.imageio.ImageIO;
  * @author jhonatan
  */
 public class ExemplarDAO {
-
+    LivroDAO livroDAO = new LivroDAO();
     private String localizacaoExemplar = "/BibliotecaSenai/Banco/Livros/Exemplares.csv";
 
     public void addExemplar(String dados) throws IOException {
@@ -31,12 +31,59 @@ public class ExemplarDAO {
         arquivoExemplar.close();
     }
 
-    public void editarExemplar(int linha, String dados) throws IOException {
+    public void editarExemplar(String dados) throws IOException {
+        ArrayList<String> exemplar = getExemplar();
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + localizacaoExemplar, false);
+        PrintWriter arquivoExemplar = new PrintWriter(arquivo);
+        String[] temp = dados.split(";");
 
+        for (int i = 0; i < exemplar.size(); i++) {
+            if (exemplar.get(i).contains(temp[0])) {
+                if (exemplar.get(i).contains(temp[1])) {
+                    exemplar.set(i, temp[0] + ";" + temp[2] + ";Disponivel");
+                }
+            }
+
+        }
+
+        for (int i = 0; i < exemplar.size(); i++) {
+            arquivoExemplar.write(exemplar.get(i) + "\r\n");
+        }
+
+        arquivoExemplar.close();
     }
 
-    public void deleteExemplar(int linha) throws IOException {
+    public void deleteExemplar(String dados) throws IOException {
+        ArrayList<String> exemplar = getExemplar();
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + localizacaoExemplar, false);
+        PrintWriter arquivoExemplar = new PrintWriter(arquivo);
+        String[] temp = dados.split(";");
 
+        for (int i = 0; i < exemplar.size(); i++) {
+            if (exemplar.get(i).contains(temp[0])) {
+                if (exemplar.get(i).contains(temp[1])) {
+                    exemplar.remove(i);
+                }
+            }
+
+        }
+
+        for (int i = 0; i < exemplar.size(); i++) {
+            arquivoExemplar.write(exemplar.get(i) + "\r\n");
+        }
+
+        arquivoExemplar.close();
+    }
+
+    public void getQuantidade(String codigo) throws IOException {
+        ArrayList<String> list_temp = getExemplar();
+        int quantidade = 0;
+        for (int i = 0; i < list_temp.size(); i++) {
+            if (list_temp.get(i).contains(codigo)) {
+                quantidade++;
+            }
+        }
+       livroDAO.autualizarQtd(codigo, quantidade);
     }
 
     public void reservarExemplar() {
@@ -68,7 +115,6 @@ public class ExemplarDAO {
 
     }
 
-   
     /*
     public ArrayList<String> getReservasLivro() {
 

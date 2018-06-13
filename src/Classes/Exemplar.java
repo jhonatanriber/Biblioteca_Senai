@@ -14,8 +14,13 @@ public class Exemplar {
     private String codigoExemplar;
     private String DataInicial;
     private String DataFinal;
-    private String DataCadastro;
+    private String Situação;
     private ExemplarDAO exemplarDAO = new ExemplarDAO();
+
+    public void setSituação(String Situação) {
+        this.Situação = Situação;
+    }
+    
 
     public void setCodigoLivro(String codigoLivro) {
         this.codigoLivro = codigoLivro;
@@ -33,15 +38,13 @@ public class Exemplar {
         this.DataFinal = DataFinal;
     }
 
-    public void setDataCadastro(String DataCadastro) {
-        this.DataCadastro = DataCadastro;
-    }
+   
 
     public String getDadosExemplar() {
-        return codigoLivro + ";" + codigoExemplar + ";" + DataCadastro + ";" + DataInicial + ";" + DataFinal;
+        return codigoLivro + ";" + codigoExemplar + ";" + Situação + ";" + DataInicial + ";" + DataFinal;
     }
 
-    public void executarAcao(Action acao, int linha) throws IOException {
+    public void executarAcao(Action acao, String dados) throws IOException {
         switch (acao) {
 
             case ADCIONAR:
@@ -49,11 +52,11 @@ public class Exemplar {
                 break;
 
             case EXCLUIR:
-                //livroDAO.deleteLivro(linha);
+                exemplarDAO.deleteExemplar(dados);
                 break;
 
             case EDITAR:
-                //livroDAO.editLivro(linha, getDadosLivro() + livroDAO.setImagemLivro(codigo, caminhoImagem));
+               exemplarDAO.editarExemplar(dados);
                 break;
 
             case RESERVAR:

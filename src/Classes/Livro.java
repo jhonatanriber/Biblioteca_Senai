@@ -17,6 +17,7 @@ public class Livro {
     private String status = "";
     private String caminhoImagem = "";
     LivroDAO livroDAO = new LivroDAO();
+    Exemplar exemplar = new Exemplar();
 
     public String getCodigo() {
         return codigo;
@@ -102,18 +103,8 @@ public class Livro {
         return codigo + ";" + titulo + ";" + autor + ";" + editora + ";" + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status;
     }
 
+    
     public ArrayList<String> getListLivros() throws IOException {
-        ArrayList<String> Livros = livroDAO.getLivro();
-        ArrayList<String> listLivros = new ArrayList<String>();
-
-        for (int i = 0; i < Livros.size(); i++) {
-            String[] aux = Livros.get(i).split(";");
-            listLivros.add(aux[0]);
-        }
-        return listLivros;
-    }
-
-    public ArrayList<String> getLivros() throws IOException {
         return livroDAO.getLivro();
     }
 

@@ -50,7 +50,7 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     public void viewLivro(int dados) {
         try {
             this.rowSelect = dados;
-            ArrayList<String> listLivro = livro.getLivros();
+            ArrayList<String> listLivro = livro.getListLivros();
             String[] listLivros = listLivro.get(rowSelect).split(";");
             jTextTitulo.setText(listLivros[1]);
             jTextCodigo.setText(listLivros[0]);
@@ -68,12 +68,12 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
 
     public void updateListLivro() {
         try {
-            ArrayList<String> listLivros = livro.getLivros();
+            ArrayList<String> listLivros = livro.getListLivros();
             model = (DefaultTableModel) jTableLivros.getModel();
             model.setNumRows(0);
             for (int i = 0; i < listLivros.size(); i++) {
                 String[] listLivro = listLivros.get(i).split(";");
-                model.addRow(listLivro);
+                model.addRow(new Object[]{(listLivro[0]), listLivro[1], listLivro[2], listLivro[3], listLivro[7]});
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex, "Atualizar Livros", JOptionPane.ERROR_MESSAGE);
@@ -93,7 +93,6 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
             dados.setBackground(new java.awt.Color(102, 102, 102));
         }
     }*/
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,22 +146,29 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(254, 254, 254));
         jPanel4.setBorder(null);
 
-        jPanel10.setBackground(new java.awt.Color(156, 156, 156));
+        jPanel10.setBackground(java.awt.SystemColor.controlShadow);
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Livro");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel13.setBackground(new java.awt.Color(1, 1, 1));
@@ -181,11 +187,15 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -193,16 +203,16 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -255,19 +265,21 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
         jTextEditora.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Editora", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         jPanel1.add(jTextEditora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 223, -1));
 
+        jTextQuantidade.setEditable(false);
         jTextQuantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextQuantidade.setText("0");
         jTextQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Qtd Exemplares", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         jPanel1.add(jTextQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 130, -1));
 
         jTableLivros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Titulo", "Autor", "Editora", "Quantidade"
             }
         ));
         jScrollPane1.setViewportView(jTableLivros);
@@ -313,11 +325,11 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel5MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
             }
         });
 
@@ -369,11 +381,11 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel8MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
             }
         });
 
@@ -459,17 +471,17 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
                 .addComponent(Conteiner_Livro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Conteiner_Livro, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(Conteiner_Livro, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
         );
 
         cadastro_Livros.add(jPanel3);
@@ -513,7 +525,7 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextAnoActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        new Config_Jpanel(cadastro_Livros, new Smenu_Livros());
+        viewLivro(jTableLivros.getSelectedRow());
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
@@ -525,7 +537,7 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        /*if (jTableLivros.getSelectedRow() > -1) {
+        if (jTableLivros.getSelectedRow() > -1) {
             try {
                 livro.setCodigo(jTextCodigo.getText());
                 livro.setTitulo(jTextTitulo.getText());
@@ -536,18 +548,18 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
                 livro.setPaginas(jTextPaginas.getText());
                 livro.setQuantidade(jTextQuantidade.getText());
                 livro.setCaminhoImagem(arquivo.getAbsolutePath());
-                livro.executarAcao(Livro.Action.EDITAR, rowSelect);
+                livro.executarAcao(Livro.Action.EDITAR, jTableLivros.getSelectedRow());
                 updateListLivro();
             } catch (Exception ex) {
                 Logger.getLogger(Smenu_Livros.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum Livro foi Selecionado!", "Visualizar Livros", JOptionPane.ERROR_MESSAGE);
-        }*/
+        }
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-       // setAllColor(jPanel8);
+        // setAllColor(jPanel8);
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
@@ -574,17 +586,17 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-       // setAllColor(jPanel9);
+        // setAllColor(jPanel9);
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-       // setAllColor(null);
+        // setAllColor(null);
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         try {
-           // rowSelect = jTableLivros.getSelectedRow();
-            livro.executarAcao(Livro.Action.EXCLUIR, rowSelect);
+            // rowSelect = jTableLivros.getSelectedRow();
+            livro.executarAcao(Livro.Action.EXCLUIR, jTableLivros.getSelectedRow());
             updateListLivro();
             clean();
         } catch (Exception ex) {
@@ -613,12 +625,21 @@ public class Smenu_Livro_Cadastrar extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        try {        
+        try {
             new Config_Jpanel(Conteiner_Livro, new Smenu_Exemplar());
+            jPanel10.setBackground(new java.awt.Color(0, 0, 0));
+            jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         } catch (IOException ex) {
             Logger.getLogger(Smenu_Livro_Cadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        new Config_Jpanel(cadastro_Livros, new Smenu_Livro_Cadastrar());
+        jPanel13.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel10.setBackground(new java.awt.Color(102, 102, 102));
+
+    }//GEN-LAST:event_jLabel1MouseClicked
     public void clean() {
         jTextTitulo.setText("");
         jTextCodigo.setText("");
