@@ -24,8 +24,6 @@ public class LivroDAO {
     private String localizacaoLivro = "/BibliotecaSenai/Banco/Livros/Livros.csv";
     private String localizacaoImagens = "/BibliotecaSenai/Banco/Livros/Imagens/";
 
-    
-
     public void addLivro(String dados) throws IOException {
 
         FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + localizacaoLivro, true);
@@ -58,6 +56,27 @@ public class LivroDAO {
         arquivoLivro.close();
     }
 
+    public void autualizarQtd(String codigo, int quantidade) throws IOException {
+        ArrayList<String> livros = getLivro();
+        String dados = "";
+        FileWriter arquivo = new FileWriter((new File("..").getCanonicalPath()) + localizacaoLivro, false);
+        PrintWriter arquivoLivro = new PrintWriter(arquivo);
+        for (int i = 0; i < livros.size(); i++) {
+            if (livros.get(i).contains(codigo)) {
+                String[] list_temp = livros.get(i).split(";");
+                livros.set(i, list_temp[0] + ";" + list_temp[1] + ";" + list_temp[2] + ";" + list_temp[3]
+                        + ";" + list_temp[4] + ";" + list_temp[5] + ";" + list_temp[6] + ";" + quantidade
+                        + ";" + list_temp[8]);
+            }
+
+        }
+        for (int i = 0; i < livros.size(); i++) {
+            arquivoLivro.write(livros.get(i) + "\r\n");
+
+        }
+        arquivoLivro.close();
+    }
+
     public void reservarLivro() {
 
     }
@@ -83,9 +102,9 @@ public class LivroDAO {
 
         return listLivro;
     }
-    
-     public String setImagemLivro(String codigo,String caminhoImagem) throws IOException {
-        String caminhoDestino = (new File("..").getCanonicalPath()) + localizacaoImagens+codigo+".jpg";
+
+    public String setImagemLivro(String codigo, String caminhoImagem) throws IOException {
+        String caminhoDestino = (new File("..").getCanonicalPath()) + localizacaoImagens + codigo + ".jpg";
         BufferedImage imagem = ImageIO.read(new File(caminhoImagem));
         File outputfile = new File(caminhoDestino);
         ImageIO.write(imagem, "jpg", outputfile);

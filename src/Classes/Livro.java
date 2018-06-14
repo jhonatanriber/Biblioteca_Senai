@@ -17,6 +17,7 @@ public class Livro {
     private String status = "";
     private String caminhoImagem = "";
     LivroDAO livroDAO = new LivroDAO();
+    Exemplar exemplar = new Exemplar();
 
     public String getCodigo() {
         return codigo;
@@ -99,41 +100,34 @@ public class Livro {
     }
 
     public String getDadosLivro() {
-        return codigo +";"+ titulo +";"+ autor +";"+ editora +";"+ edicao +";"+ ano +";"+ paginas +";"+ quantidade +";"+ status;
+        return codigo + ";" + titulo + ";" + autor + ";" + editora + ";" + edicao + ";" + ano + ";" + paginas + ";" + quantidade + ";" + status;
     }
 
-    public ArrayList<String> getLivros() throws IOException {
+    
+    public ArrayList<String> getListLivros() throws IOException {
         return livroDAO.getLivro();
     }
 
-    public void executarAcao(Action acao,int linha) throws IOException {
+    public void executarAcao(Action acao, int linha) throws IOException {
         switch (acao) {
+
             case ADCIONAR:
-                livroDAO.addLivro(getDadosLivro()+livroDAO.setImagemLivro(codigo, caminhoImagem));
+                livroDAO.addLivro(getDadosLivro() + livroDAO.setImagemLivro(codigo, caminhoImagem));
                 break;
-                
+
             case EXCLUIR:
                 livroDAO.deleteLivro(linha);
                 break;
-                
+
             case EDITAR:
-                livroDAO.editLivro(linha,getDadosLivro()+livroDAO.setImagemLivro(codigo, caminhoImagem));
+                livroDAO.editLivro(linha, getDadosLivro() + livroDAO.setImagemLivro(codigo, caminhoImagem));
                 break;
-                
-            case RESERVAR:
-                break;
-                
-            case EMPRESTIMO:
-                break;
-                
-            case DEVOLVER:
-                break;
+
         }
     }
 
     public enum Action {
-        ADCIONAR, EXCLUIR, EDITAR, RESERVAR, EMPRESTIMO, DEVOLVER
-
+        ADCIONAR, EXCLUIR, EDITAR
     }
 
 }

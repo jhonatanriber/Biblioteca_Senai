@@ -9,6 +9,6 @@ package Classes;
  *
  * @author jhonatan
  */
-public class Usuario_Sistema {
+public class Funcionario {
     
 }
